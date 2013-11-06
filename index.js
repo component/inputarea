@@ -24,7 +24,7 @@ function Input(el) {
   if (!(this instanceof Input)) return new Input(el);
   this.classes = classes(el);
   this.events = events(el, this);
-  this.events.bind('keypress');
+  this.events.bind('keyup');
   this.el = el;
 }
 
@@ -35,21 +35,26 @@ function Input(el) {
 Emitter(Input.prototype);
 
 /**
- * Handle keypress.
+ * Handle keyup.
  */
 
-Input.prototype.onkeypress = function(e){
-  // return
-  if (13 != e.keyCode) return;
+Input.prototype.onkeyup = function(e){
+  var val = this.el.value;
 
-  // textarea mode
-  if (e.shiftKey) {
+  // TODO: more efficient
+  var lines = val.split('\n').length;
+  
+  if (lines > 1) {
     this.classes.add('multiline');
-    return;
+  } else {
+    this.classes.remove('multiline');
   }
 
+  // textarea mode
+  if (13 != e.keyCode) return;
+  if (e.shiftKey) return;
+
   // input mode
-  var val = this.el.value;
   this.emit('input', val);
   this.clear();
   e.preventDefault();
