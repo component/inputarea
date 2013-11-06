@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inputarea</title>
+  <style type="text/css">
+    * {
+      -webkit-box-sizing: border-box;      
+    }
+
+    body {
+      padding: 80px;
+    }
+
+    textarea {
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 400px;
+      height: 55px;
+      border-radius: 2px;
+      outline: none;
+      -webkit-transition: height 200ms ease-out;
+    }
+
+    textarea.multiline {
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <textarea placeholder="Message"></textarea>
+
+  <script src="build/build.js"></script>
+
+  <script>
+    var inputarea = require('inputarea');
+    var el = document.querySelector('textarea');
+
+    inputarea(el).on('input', function(str){
+      console.log(str);
+    });
+  </script>
+</body>
+</html>

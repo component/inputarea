@@ -1,0 +1,22 @@
+{
+  "name": "inputarea",
+  "repo": "component/inputarea",
+  "description": "Cross between a textarea and text input",
+  "version": "0.0.1",
+  "keywords": [
+    "input",
+    "textarea"
+  ],
+  "dependencies": {
+    "component/emitter": "*",
+    "component/events": "1.0.4",
+    "component/classes": "1.1.3"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "remotes": []
+}
