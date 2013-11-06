@@ -24,7 +24,7 @@ function Input(el) {
   if (!(this instanceof Input)) return new Input(el);
   this.classes = classes(el);
   this.events = events(el, this);
-  this.events.bind('keyup');
+  this.events.bind('keypress');
   this.el = el;
 }
 
@@ -35,10 +35,10 @@ function Input(el) {
 Emitter(Input.prototype);
 
 /**
- * Handle keyup.
+ * Handle keypress.
  */
 
-Input.prototype.onkeyup = function(e){
+Input.prototype.onkeypress = function(e){
   var val = this.el.value;
 
   // TODO: more efficient
