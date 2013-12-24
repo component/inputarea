@@ -2,7 +2,7 @@
   "name": "inputarea",
   "repo": "component/inputarea",
   "description": "Cross between a textarea and text input",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "keywords": [
     "input",
     "textarea"
