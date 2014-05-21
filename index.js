@@ -50,7 +50,7 @@ Input.prototype.onkeydown = function(e){
  */
 
 Input.prototype.onkeyup = function(e){
-  var val = (typeof this.el.value != 'undefined') this.el.value ? this.el.innerHTML;
+  var val = (typeof this.el.value != 'undefined') ? this.el.value : this.el.innerHTML;
 
   // TODO: more efficient
   var lines = val.split('\n').length;
