@@ -50,7 +50,7 @@ Input.prototype.onkeydown = function(e){
  */
 
 Input.prototype.onkeyup = function(e){
-  var val = this.el.value;
+  var val = (typeof this.el.value != 'undefined') this.el.value ? this.el.innerHTML;
 
   // TODO: more efficient
   var lines = val.split('\n').length;
@@ -77,5 +77,9 @@ Input.prototype.onkeyup = function(e){
  */
 
 Input.prototype.clear = function(){
-  this.el.value = '';
+  if (typeof this.el.value != 'undefined') {
+    this.el.value = ''
+  } else {
+    this.el.innerHTML = '';
+  }
 };
