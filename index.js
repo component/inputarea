@@ -66,6 +66,9 @@ Input.prototype.onkeyup = function(e){
   if (e.shiftKey) return;
 
   // input mode
+  if (typeof this.cleanedValue != 'undefined') {
+    val = this.cleanedValue();
+  }
   this.emit('input', val);
   this.clear();
   e.preventDefault();
