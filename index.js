@@ -40,7 +40,7 @@ Emitter(Input.prototype);
  */
 
 Input.prototype.onkeydown = function(e){
-  if (13 == e.keyCode && !e.shiftKey && !e.altKey) {
+  if (13 == e.keyCode && !e.shiftKey && !e.altKey && !e.ctrlKey) {
     e.preventDefault();
   }
 };
@@ -65,6 +65,7 @@ Input.prototype.onkeyup = function(e){
   if (13 != e.keyCode) return;
   if (e.shiftKey) return;
   if (e.altKey) return;
+  if (e.ctrlKey) return;
 
   // input mode
   if (typeof this.cleanedValue != 'undefined') {
