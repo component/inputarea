@@ -40,7 +40,7 @@ Emitter(Input.prototype);
  */
 
 Input.prototype.onkeydown = function(e){
-  if (13 == e.keyCode && !e.shiftKey) {
+  if (13 == e.keyCode && !e.shiftKey && !e.altKey && !e.ctrlKey) {
     e.preventDefault();
   }
 };
@@ -50,7 +50,7 @@ Input.prototype.onkeydown = function(e){
  */
 
 Input.prototype.onkeyup = function(e){
-  var val = this.el.value;
+  var val = (typeof this.el.value != 'undefined') ? this.el.value : this.el.innerHTML;
 
   // TODO: more efficient
   var lines = val.split('\n').length;
@@ -64,8 +64,13 @@ Input.prototype.onkeyup = function(e){
   // textarea mode
   if (13 != e.keyCode) return;
   if (e.shiftKey) return;
+  if (e.altKey) return;
+  if (e.ctrlKey) return;
 
   // input mode
+  if (typeof this.cleanedValue != 'undefined') {
+    val = this.cleanedValue();
+  }
   this.emit('input', val);
   this.clear();
   e.preventDefault();
@@ -77,5 +82,9 @@ Input.prototype.onkeyup = function(e){
  */
 
 Input.prototype.clear = function(){
-  this.el.value = '';
+  if (typeof this.el.value != 'undefined') {
+    this.el.value = ''
+  } else {
+    this.el.innerHTML = '';
+  }
 };

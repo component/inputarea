@@ -9,8 +9,8 @@
   ],
   "dependencies": {
     "component/emitter": "*",
-    "component/events": "1.0.4",
-    "component/classes": "1.1.3"
+    "component/events": "*",
+    "component/classes": "*"
   },
   "development": {},
   "license": "MIT",
